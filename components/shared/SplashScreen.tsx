@@ -1,14 +1,16 @@
 "use client";
+
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { isAuthenticated } from "@/lib/auth";
+
 
 const SplashScreen = () => {
     const router = useRouter();
 
     useEffect(() => {
-        const session = localStorage.getItem("habit-tracker-session")
-
-        if (session) {
+        
+        if (isAuthenticated()) {
             router.replace('/dashboard')
         } else {
             router.replace('/login')

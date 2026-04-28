@@ -1,23 +1,32 @@
 "use client"
-import { useEffect } from 'react';
+
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { isAuthenticated, logoutUser } from '@/lib/auth';
+import { isAuthenticated, logoutUser, getCurrentUser, User } from '@/lib/auth';
 import { memo } from 'react';
 
 
 const Dashboard = () => {
 
     const router = useRouter();
+    const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
         if (!isAuthenticated()) {
             router.replace('/login');
         }
+
+        const currentUser = getCurrentUser();
+        setUser(currentUser);
     }, [router]);
 
     const handleLogout = () => {
         logoutUser();
         router.push('/login')
+    }
+
+    if (!user) {
+        return <div className="p-8">Loading...</div>
     }
 
     return (

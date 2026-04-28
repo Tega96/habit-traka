@@ -45,7 +45,7 @@ const Login = () => {
                         placeholder='Password'
                         className='w-full p-2 border rounded mb-4'
                         value={password}
-                        onChange={(e) => setEmail(e.target.value)} 
+                        onChange={(e) => setPassword(e.target.value)} 
                         required
                     />
                     <button type="submit" 
