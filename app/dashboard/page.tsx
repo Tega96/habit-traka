@@ -57,16 +57,50 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="p-8">
-            <h1 className="text-2xl font-bold">Dashboard</h1>
-            <button
-                onClick={handleLogout}
-                className="mt-4 bg-red-500 text-white p-2 rounded"
-            >
-                Logout
-            </button>
-            <p className="mt-4">Habit tracking ui</p>
-            {/* <HabitCard /> */}
+        <div className="max-w-4xl mx-auto p-6">
+            <div className="flex flex-row items-center justify-between mb-6">
+                <div className="">
+                    <h1 className="text-3xl font-bold">Habit Traka</h1>
+                    <p className="text-gray-600">Welcome, {user.email}</p>
+                </div>
+                <button
+                    onClick={handleLogout}
+                    className="mt-4 bg-red-500 text-white p-2 rounded"
+                >
+                    Logout
+                </button>
+            </div>
+
+            <div className="mb-6">
+                <HabitForm userId={user.id} onHabitCreated={refreshData} />
+            </div>
+
+            {habits.length === 0 ? (
+                <div className="text-center py-12 text-gray-500">
+                    <p>No habits yet. Click "Add Habit" to get started!</p>
+                </div>
+            ): (
+                <div className="grid gap-4 md:grid-cols-2">
+                    {habits.map((habit) => (
+                        <HabitCard
+                            key={habit.id}
+                            habit={habit}
+                            userId={user.id}
+                            onUpdate={refreshData}
+                            onEdit={setEditingHabit}
+                        />
+                    ))}
+                </div>
+            )}
+
+            {editingHabit && (
+                <EditHabitModal
+                    habit={editingHabit}
+                    userId={user.id}
+                    onClose={() => setEditingHabit(null)}
+                    onUpdate={refreshData}
+                />
+            )}
         </div>
     );
 };
