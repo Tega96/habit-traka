@@ -18,7 +18,7 @@ export function getHabitsById(habitId: string, userId: string): HabitProps | nul
 }
 
 // Create a new habit
-export function creteHabit(userId: string, input: CreateHabitInputProps): HabitProps {
+export function createHabit(userId: string, input: CreateHabitInputProps): HabitProps {
     const now = new Date().toISOString();
     const newHabit: HabitProps = {
         id: uuidv4(),
@@ -32,7 +32,7 @@ export function creteHabit(userId: string, input: CreateHabitInputProps): HabitP
 
     const raw = localStorage.getItem(HABIT_KEY);
     const allHabits: HabitProps[] = raw ? JSON.parse(raw) : [];
-    allHabits.push(newHabit)
+    allHabits.push(newHabit);
     localStorage.setItem(HABIT_KEY, JSON.stringify(allHabits));
 
     return newHabit;
@@ -59,7 +59,7 @@ export function updateHabit(
         updatedAt: new Date().toISOString(),
     }
 
-    allHabits[habitIndex] = updateHabit;
+    allHabits[habitIndex] = updatedHabit;
     localStorage.setItem(HABIT_KEY, JSON.stringify(allHabits));
 
     return updatedHabit
