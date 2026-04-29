@@ -11,7 +11,7 @@ type HabitListProps = {
     onUpdate: () => void;
 }
 
-const HabitList = ({habit, userId, onClose, onUpdate}: EditHabitModalProps) => {
+const HabitList = ({habit, userId, onClose, onUpdate}: HabitListProps) => {
     const [name, setName] = useState(habit.name);
     const [frequency, setFrequency] = useState<"daily" | "weekly">(habit.frequency);
 
