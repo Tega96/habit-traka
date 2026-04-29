@@ -68,7 +68,7 @@ const HabitForm = ({ userId, onHabitCreated}: HabitFormProps) => {
           onClick={() => setIsOpen(false)}
           className="bg-gray-300  px-4 py-2 rounded hover:bg-green-600"
         >
-            Save
+            Cancel
         </button>
 
       </div>

@@ -84,7 +84,7 @@ export function completeHabit(
     habitId: string,
     userId: string,
     date: string = new Date().toISOString().split('T')[0]
-): HabitProps[] | null {
+): HabitProps | null {
     const raw = localStorage.getItem(HABIT_KEY);
     if (!raw) return null;
 
@@ -160,7 +160,7 @@ export function getCurrentStreak(habit: HabitProps): number {
         const weeks = new Set<string>();
         completions.forEach(date => {
             const week = getWeekNumber(new Date(date));
-            week.add(week);
+            weeks.add(week);
         });
         return weeks.size;
     }

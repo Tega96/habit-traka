@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import RegisterSW from "./RegisterSW";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,18 +17,18 @@ export const metadata: Metadata = {
   title: "Habit tracker",
   description: "Habit traka is a great productivity PWA enabled app for tracking habits to enhance productivity",
   manifest: "/manifest.json",
-  themeColor: "#3b82f6",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "Habit Tracka"
-  },
+  // themeColor: "#3b82f6",
+  // viewport: {
+  //   width: "device-width",
+  //   initialScale: 1,
+  //   maximumScale: 1,
+  //   userScalable: false,
+  // },
+  // appleWebApp: {
+  //   capable: true,
+  //   statusBarStyle: "default",
+  //   title: "Habit Tracka"
+  // },
 };
 
 export default function RootLayout({
@@ -44,7 +45,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
       </head>
-      <body className="min-h-full flex flex-col bg-gray-50">{children}</body>
+      <body className="min-h-full flex flex-col bg-gray-50">
+        {children}
+        <RegisterSW />
+      </body>
     </html>
   );
 }

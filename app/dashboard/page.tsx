@@ -8,7 +8,7 @@ import HabitCard from '@/components/habits/HabitCard';
 import { HabitProps } from '@/types/habit';
 import { getHabitsForUser } from '@/lib/habits';
 import HabitForm from '@/components/habits/HabitForm';
-import EditHabitModal from '@/components/habits/EditHabitModal';
+import HabitList from '@/components/habits/HabitList';
 
 
 const Dashboard = () => {
@@ -94,7 +94,7 @@ const Dashboard = () => {
             )}
 
             {editingHabit && (
-                <EditHabitModal
+                <HabitList
                     habit={editingHabit}
                     userId={user.id}
                     onClose={() => setEditingHabit(null)}
