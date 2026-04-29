@@ -47,8 +47,8 @@ export function updateHabit(
     const raw = localStorage.getItem(HABIT_KEY);
     if (!raw) return null;
 
-    const allHabits = JSON.parse(raw);
-    // const allHabits: HabitProps[] = JSON.parse(raw);
+    // const allHabits = JSON.parse(raw);
+    const allHabits: HabitProps[] = JSON.parse(raw);
     const habitIndex = allHabits.findIndex(h => h.id === habitId && h.userId === userId);
 
     if (habitIndex === -1) return null;
@@ -172,7 +172,7 @@ export function getCurrentStreak(habit: HabitProps): number {
 function getWeekNumber(date: Date): string {
     const year = date.getFullYear();
     const firstJan = new Date(year, 0, 1);
-    const days = Math.floor((date.getTime() = firstJan.getTime())) / (24 * 60 * 60 * 1000);
+    const days = Math.floor((date.getTime() - firstJan.getTime())) / (24 * 60 * 60 * 1000);
     const week = Math.ceil((days + firstJan.getDay() + 1) / 7)
     return `${year}-W${week.toString().padStart(2, '0')}`;
 }

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { isAuthenticated, logoutUser, getCurrentUser, User } from '@/lib/auth';
 import { memo } from 'react';
+import HabitCard from '@/components/habits/HabitCard';
 
 
 const Dashboard = () => {
@@ -39,6 +40,7 @@ const Dashboard = () => {
                 Logout
             </button>
             <p className="mt-4">Habit tracking ui</p>
+            {/* <HabitCard /> */}
         </div>
     );
 };
